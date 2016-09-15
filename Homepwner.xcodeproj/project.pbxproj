@@ -9,10 +9,12 @@
 /* Begin PBXBuildFile section */
 		7417832B1D8AB5120015534A /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 7417832A1D8AB5120015534A /* main.m */; };
 		7417832E1D8AB5120015534A /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 7417832D1D8AB5120015534A /* AppDelegate.m */; };
-		741783311D8AB5120015534A /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 741783301D8AB5120015534A /* ViewController.m */; };
 		741783341D8AB5120015534A /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 741783321D8AB5120015534A /* Main.storyboard */; };
 		741783361D8AB5120015534A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 741783351D8AB5120015534A /* Assets.xcassets */; };
 		741783391D8AB5120015534A /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 741783371D8AB5120015534A /* LaunchScreen.storyboard */; };
+		741783421D8AB5590015534A /* ItemsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 741783411D8AB5590015534A /* ItemsViewController.m */; };
+		741783461D8AB74E0015534A /* Item.m in Sources */ = {isa = PBXBuildFile; fileRef = 741783451D8AB74E0015534A /* Item.m */; };
+		7417834A1D8AB9B20015534A /* ItemStore.m in Sources */ = {isa = PBXBuildFile; fileRef = 741783491D8AB9B20015534A /* ItemStore.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -20,12 +22,16 @@
 		7417832A1D8AB5120015534A /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		7417832C1D8AB5120015534A /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		7417832D1D8AB5120015534A /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
-		7417832F1D8AB5120015534A /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
-		741783301D8AB5120015534A /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
 		741783331D8AB5120015534A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		741783351D8AB5120015534A /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		741783381D8AB5120015534A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		7417833A1D8AB5120015534A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		741783401D8AB5590015534A /* ItemsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ItemsViewController.h; sourceTree = "<group>"; };
+		741783411D8AB5590015534A /* ItemsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ItemsViewController.m; sourceTree = "<group>"; };
+		741783451D8AB74E0015534A /* Item.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Item.m; sourceTree = "<group>"; };
+		741783471D8AB7710015534A /* Item.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = Item.h; path = ../Item.h; sourceTree = "<group>"; };
+		741783481D8AB9B20015534A /* ItemStore.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ItemStore.h; sourceTree = "<group>"; };
+		741783491D8AB9B20015534A /* ItemStore.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ItemStore.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -58,10 +64,14 @@
 		741783281D8AB5120015534A /* Homepwner */ = {
 			isa = PBXGroup;
 			children = (
+				741783471D8AB7710015534A /* Item.h */,
+				741783451D8AB74E0015534A /* Item.m */,
+				741783481D8AB9B20015534A /* ItemStore.h */,
+				741783491D8AB9B20015534A /* ItemStore.m */,
+				741783401D8AB5590015534A /* ItemsViewController.h */,
+				741783411D8AB5590015534A /* ItemsViewController.m */,
 				7417832C1D8AB5120015534A /* AppDelegate.h */,
 				7417832D1D8AB5120015534A /* AppDelegate.m */,
-				7417832F1D8AB5120015534A /* ViewController.h */,
-				741783301D8AB5120015534A /* ViewController.m */,
 				741783321D8AB5120015534A /* Main.storyboard */,
 				741783351D8AB5120015534A /* Assets.xcassets */,
 				741783371D8AB5120015534A /* LaunchScreen.storyboard */,
@@ -110,6 +120,7 @@
 				TargetAttributes = {
 					741783251D8AB5120015534A = {
 						CreatedOnToolsVersion = 8.0;
+						LastSwiftMigration = 0800;
 						ProvisioningStyle = Automatic;
 					};
 				};
@@ -150,9 +161,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				741783311D8AB5120015534A /* ViewController.m in Sources */,
+				741783461D8AB74E0015534A /* Item.m in Sources */,
+				741783421D8AB5590015534A /* ItemsViewController.m in Sources */,
 				7417832E1D8AB5120015534A /* AppDelegate.m in Sources */,
 				7417832B1D8AB5120015534A /* main.m in Sources */,
+				7417834A1D8AB9B20015534A /* ItemStore.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -270,10 +283,13 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				INFOPLIST_FILE = Homepwner/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.psamp.Homepwner;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 3.0;
 			};
 			name = Debug;
 		};
@@ -281,10 +297,12 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				INFOPLIST_FILE = Homepwner/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.psamp.Homepwner;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
 			};
 			name = Release;
 		};
