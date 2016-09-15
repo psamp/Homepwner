@@ -72,7 +72,7 @@
         Item *item = self.itemStore.allItems[indexPath.row];
         
         NSString *title = [NSString stringWithFormat:@"Delete %@?", item.name];
-        NSString *message = @"Are you sure you want to delete this item?";
+        NSString *message = @"Are you sure you want to remove this item?";
         
         UIAlertController *ac =[UIAlertController alertControllerWithTitle:title
                                                                    message:message
@@ -81,7 +81,7 @@
         UIAlertAction *cancelAction = [UIAlertAction actionWithTitle:@"Cancel"
                                                                style:UIAlertActionStyleCancel
                                                              handler:nil];
-        UIAlertAction *deleteAction = [UIAlertAction actionWithTitle:@"Delete"
+        UIAlertAction *removeAction = [UIAlertAction actionWithTitle:@"Remove"
                                                                style:UIAlertActionStyleDestructive
                                                              handler:^(UIAlertAction *_Nonnull action){
                                                                  
@@ -89,7 +89,7 @@
                                                                  [self.tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationAutomatic];
                                                              }];
         [ac addAction:cancelAction];
-        [ac addAction:deleteAction];
+        [ac addAction:removeAction];
         
         [self presentViewController:ac animated:YES completion:nil];
     }
