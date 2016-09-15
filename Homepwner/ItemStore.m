@@ -25,14 +25,24 @@
     return newItem;
 }
 
+- (void)moveItemAtIndex:(NSUInteger)oldIndex toIndex:(NSUInteger)newIndex {
+    if(oldIndex == newIndex) {
+        return;
+    }
+    
+    Item *item = self.items[oldIndex];
+    [self.items removeObjectAtIndex:oldIndex];
+    [self.items insertObject:item atIndex:newIndex];
+}
+
+- (void)removeItem:(Item *)item {
+    [self.items removeObject:item];
+}
+
 - (instancetype)init {
     self = [super init];
     if (self) {
         _items = [NSMutableArray array];
-        
-        for (int i = 0; i < 5; i++) {
-            [self createItem];
-        }
     }
     return self;
 }
