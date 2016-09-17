@@ -20,12 +20,12 @@
 
 - (instancetype)initWithRandomValues {
     NSArray *randomNoun = @[@"Gemstone", @"Macarons", @"Snapback", @"Water bottle", @"Hairtie"];
-    NSArray *randomAdj = @[@"Opaque", @"Pealescent", @"Blue", @"Sleek", @"Convenient"];
+    NSArray *randomAdj = @[@"Opaque", @"Pearlescent", @"Blue", @"Sleek", @"Convenient"];
     NSInteger nounIndex = arc4random_uniform((int) randomNoun.count);
     NSInteger adjIndex = arc4random_uniform((int) randomAdj.count);
     
     NSString *randomName = [NSString stringWithFormat:@"%@ %@", randomAdj[adjIndex], randomNoun[nounIndex]];
-    NSInteger randomValue = (int) arc4random_uniform(100);
+    int randomValue = (int) arc4random_uniform(100);
     NSString *randomSerial = [[[NSUUID UUID] UUIDString] substringToIndex:5];
     
     return [self initWithName:randomName
@@ -35,10 +35,11 @@
 
 - (instancetype)initWithName:(NSString*)name
                 serialNumber:(NSString*)serialNumber
-              valueInDollars:(NSInteger)valueInDollars {
+              valueInDollars:(int)valueInDollars {
     self = [super init];
     
     if (self) {
+        _itemKey = [NSUUID UUID].UUIDString;
         _name = name;
         _valueInDollars = valueInDollars;
         _serialNumber = [serialNumber copy];

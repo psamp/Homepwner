@@ -7,11 +7,13 @@
 //
 
 #import "ItemsViewController.h"
-#import "ItemStore.h"
-#import "Item.h"
+#import "DetailViewController.h"
 #import "ItemCell.h"
+#import "Item.h"
+#import "ItemStore.h"
+#import "ImageStore.h"
 
-@interface ItemsViewController ()
+@interface ItemsViewController () <UITextFieldDelegate>
 
 @end
 
@@ -27,28 +29,32 @@
                           withRowAnimation:UITableViewRowAnimationAutomatic];
 }
 
-- (IBAction)toggleEditingMode:(id)sender {
-    
-    if(self.editing) {
-        [sender setTitle:@"Edit" forState:UIControlStateNormal];
-        [self setEditing:NO animated:YES];
-    } else {
-        [sender setTitle:@"Done" forState:UIControlStateNormal];
-        [self setEditing:YES animated:YES];
-    }
-    
-}
-
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    CGFloat statusBarHeight = [UIApplication sharedApplication].statusBarFrame.size.height;
-    UIEdgeInsets insets = UIEdgeInsetsMake(statusBarHeight, 0, 0, 0);
-    self.tableView.contentInset = insets;
-    self.tableView.scrollIndicatorInsets = insets;
-    
     self.tableView.rowHeight = UITableViewAutomaticDimension;
     self.tableView.estimatedRowHeight = 65;
+}
+
+-(void)viewWillAppear:(BOOL)animated {
+    [super viewWillAppear:animated];
+    [self.tableView reloadData];
+}
+
+-(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+    
+    if([segue.identifier isEqualToString:@"ShowItem"]) {
+        NSInteger row = [self.tableView indexPathForSelectedRow].row;
+        Item *item = self.itemStore.allItems[row];
+        DetailViewController *dvc = (DetailViewController*)segue.destinationViewController;
+        dvc.item = item;
+        dvc.imageStore = self.imageStore;
+    }
+}
+
+-(BOOL)textFieldShouldReturn:(UITextField *)textField {
+    [textField resignFirstResponder];
+    return YES;
 }
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
@@ -88,11 +94,12 @@
         UIAlertAction *cancelAction = [UIAlertAction actionWithTitle:@"Cancel"
                                                                style:UIAlertActionStyleCancel
                                                              handler:nil];
+        
         UIAlertAction *removeAction = [UIAlertAction actionWithTitle:@"Remove"
                                                                style:UIAlertActionStyleDestructive
                                                              handler:^(UIAlertAction *_Nonnull action){
-                                                                 
                                                                  [self.itemStore removeItem:item];
+                                                                 [self.imageStore deleteImageForKey:item.itemKey];
                                                                  [self.tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationAutomatic];
                                                              }];
         [ac addAction:cancelAction];
@@ -106,5 +113,13 @@
 - (void)tableView:(UITableView *)tableView moveRowAtIndexPath:(NSIndexPath *)sourceIndexPath toIndexPath:(NSIndexPath *)destinationIndexPath {
     
     [self.itemStore moveItemAtIndex:sourceIndexPath.row toIndex:destinationIndexPath.row];
+}
+
+- (instancetype)initWithCoder:(NSCoder *)coder {
+    self = [super initWithCoder:coder];
+    if (self) {
+        self.navigationItem.leftBarButtonItem = [self editButtonItem];
+    }
+    return self;
 }
 @end
