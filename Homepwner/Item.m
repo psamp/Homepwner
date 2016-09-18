@@ -8,6 +8,10 @@
 
 #import "Item.h"
 
+@interface Item () <NSCoding>
+
+@end
+
 @implementation Item
 
 - (NSString *)description {
@@ -16,6 +20,17 @@
 
 - (instancetype)init {
     return [self initWithRandomValues];
+}
+
+- (instancetype)initWithCoder:(NSCoder *)coder {
+    self = [super init];
+    if (self) {
+        _itemKey = [coder decodeObjectForKey:@"itemKey"];
+        _name = [coder decodeObjectForKey:@"name"];
+        _dateCreated = [coder decodeObjectForKey:@"dateCreated"];
+        _valueInDollars = [coder decodeIntForKey:@"valueInDollars"];
+    }
+    return self;
 }
 
 - (instancetype)initWithRandomValues {
@@ -48,6 +63,17 @@
     }
     
     return self;
+}
+
+
+-(void)encodeWithCoder:(NSCoder *)aCoder {
+    
+    [aCoder encodeObject:self.itemKey forKey:@"itemKey"];
+    [aCoder encodeObject:self.name forKey:@"name"];
+    [aCoder encodeObject:self.dateCreated forKey:@"dateCreated"];
+    [aCoder encodeObject:self.serialNumber forKey:@"serialNumber"];
+    
+    [aCoder encodeInteger:self.valueInDollars forKey:@"valueInDollars"];
 }
 
 @end
